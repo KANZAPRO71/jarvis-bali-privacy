@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebijakan Privasi — JARVIS Bali</title>
+<meta name="description" content="Kebijakan privasi aplikasi JARVIS Bali: data apa yang dikumpulkan, ke mana dikirim, dan bagaimana cara menghapusnya.">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; padding: 32px 20px 64px;
+    background: #05080a; color: #d8dee6;
+    font: 16px/1.65 -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  h1 { color: #e8b84a; font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { color: #e8b84a; font-size: 1.05rem; margin: 32px 0 8px; }
+  .updated { color: #64748b; font-size: .85rem; margin: 0 0 8px; }
+  .badge {
+    display: inline-block; background: #d99b26; color: #000; font-weight: 700;
+    border-radius: 999px; padding: 4px 12px; font-size: .75rem; margin-bottom: 16px;
+  }
+  ul { padding-left: 20px; }
+  li { margin: 4px 0; }
+  code { background: #131a20; padding: 1px 5px; border-radius: 4px; font-size: .9em; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .9rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1c262e; vertical-align: top; }
+  th { color: #e8b84a; font-weight: 600; }
+  .note { background: #0d1418; border-left: 3px solid #d99b26; padding: 12px 14px; border-radius: 0 8px 8px 0; }
+  footer { margin-top: 40px; color: #64748b; font-size: .8rem; border-top: 1px solid #1c262e; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="badge">Android &middot; com.jarvis.bali</span>
+  <h1>Kebijakan Privasi &mdash; JARVIS Bali</h1>
+  <p class="updated">Terakhir diperbarui: 1 Oktober 2026</p>
+
+  <p>
+    JARVIS Bali adalah panduan AI untuk wisata Bali. Aplikasi ini tidak berisi iklan, tidak menjual data,
+    dan tidak membuat profil pengguna untuk pelacakan. Aplikasi ini memakai kunci API milik Anda sendiri
+    (BYOK): Anda memasukkan kunci Gemini Anda sendiri di menu Pengaturan, dan kunci tersebut disimpan hanya
+    di perangkat Anda.
+  </p>
+
+  <h2>1. Data yang diproses</h2>
+  <table>
+    <tr><th>Data</th><th>Alasan</th><th>Dikirim ke</th></tr>
+    <tr><td>Rekaman mikrofon (suara)</td><td>Fitur bicara langsung (live speech-to-speech) dan input suara</td><td>Google Gemini API, memakai kunci Anda sendiri</td></tr>
+    <tr><td>Gambar dari kamera</td><td>Mode vision ("lihat objek ini")</td><td>Google Gemini API, memakai kunci Anda sendiri</td></tr>
+    <tr><td>Lokasi GPS (presisi atau area)</td><td>Konteks "GPS LIVE", rekomendasi tempat terdekat, rute, cuaca</td><td>Google Gemini API, Open-Meteo, OSRM, penyedia ubin peta</td></tr>
+    <tr><td>Teks obrolan dan preferensi</td><td>Jawaban, histori, dan mengingat preferensi antar sesi</td><td>Google Gemini API; server memori opsional bila diaktifkan</td></tr>
+    <tr><td>Kunci API Gemini</td><td>Autentikasi ke Gemini</td><td>Disimpan lokal di perangkat, dikirim ke Google bersama permintaan</td></tr>
+  </table>
+
+  <h2>2. Tujuan dan pihak ketiga</h2>
+  <p>Data yang keluar perangkat hanya dikirim ke penyedia berikut, dan hanya sebatas yang dibutuhkan fitur:</p>
+  <ul>
+    <li><strong>Google Gemini API</strong> &mdash; suara, gambar, teks, dan konteks lokasi untuk menghasilkan jawaban.</li>
+    <li><strong>Penyedia ubin peta</strong> &mdash; koordinat peta yang sedang Anda lihat, untuk menggambar peta.</li>
+    <li><strong>OSRM (router publik)</strong> &mdash; titik awal dan tujuan untuk menghitung jarak dan waktu rute.</li>
+    <li><strong>Open-Meteo</strong> &mdash; koordinat untuk data cuaca.</li>
+    <li><strong>exchangerate-api</strong> &mdash; nilai tukar untuk konversi harga.</li>
+    <li><strong>Server memori JARVIS (opsional)</strong> &mdash; hanya bila Anda mengaktifkan "Simpan memori di server". Bila dimatikan, preferensi dan catatan perjalanan tetap berada di perangkat dan hilang saat aplikasi ditutup.</li>
+  </ul>
+
+  <div class="note">
+    <strong>Mode lokasi "Setara area".</strong> Aplikasi menyediakan mode yang membulatkan koordinat sekitar
+    1,1 km sebelum dikirim ke penyedia peta, rute, dan cuaca. Mode ini mengurangi jejjak perjalanan dan tetap
+    membuat peta, rute, dan cuaca berfungsi normal.
+  </div>
+
+  <h2>3. Penyimpanan dan retensi</h2>
+  <ul>
+    <li>Preferensi, kunci API, histori obrolan, dan lokasi disimpan di penyimpanan lokal perangkat (WebView <code>localStorage</code> dan <code>SharedPreferences</code>).</li>
+    <li>Data tidak disimpan di server kami, kecuali memori cloud bila Anda mengaktifkannya.</li>
+    <li>Data hilang permanen saat aplikasi di-uninstall atau saat Anda memilih "Hapus semua data" di menu Pengaturan.</li>
+    <li>Cache WebView dibersihkan otomatis setiap kali versi aplikasi diperbarui.</li>
+  </ul>
+
+  <h2>4. Hak Anda</h2>
+  <ul>
+    <li>Menarik izin Mikrofon, Kamera, dan Lokasi kapan saja lewat Setelan Android.</li>
+    <li>Menghapus seluruh data lokal kapan saja lewat <strong>Pengaturan &rarr; Data &amp; privasi &rarr; Hapus semua data</strong>.</li>
+    <li>Menghapus histori obrolan dan memori sesi kapan saja dari aplikasi.</li>
+    <li>Mematikan memori cloud kapan saja.</li>
+  </ul>
+
+  <h2>5. Penggunaan oleh anak</h2>
+  <p>Aplikasi ini ditujukan untuk pengguna umum, bukan anak di bawah umur, dan tidak mengumpulkan data dengan sengaja dari anak.</p>
+
+  <h2>6. Perubahan kebijakan</h2>
+  <p>Perubahan material pada kebijakan ini akan disertakan dalam pembaruan aplikasi, dan tanggal "terakhir diperbarui" di atas akan ikut diperbarui.</p>
+
+  <h2>7. Kontak</h2>
+  <p>
+    Pertanyaan privasi:
+    <a href="https://github.com/KANZAPRO71/jarvis-bali-backup/issues" style="color:#e8b84a">github.com/KANZAPRO71/jarvis-bali-backup</a>
+  </p>
+
+  <h2>English summary</h2>
+  <p>
+    JARVIS Bali processes microphone audio (live voice), camera images (vision mode), location (GPS LIVE,
+    routing, and weather), and chat text in order to answer you. Audio, images, text, and location context are
+    sent to the Google Gemini API using <em>your own</em> API key. Map tiles, routing (OSRM), weather
+    (Open-Meteo), and currency rates are fetched from their public providers, using only the coordinates needed
+    for the feature you are using. Optional cloud memory is off by default and stores nothing on our servers when
+    disabled. Preferences, API key, and chat history live only on your device and are deleted on uninstall or via
+    <em>Settings &rarr; Data &amp; privacy &rarr; Erase all data</em>. No ads, no sale of data, no tracking profiles.
+  </p>
+
+  <footer>JARVIS Bali &middot; com.jarvis.bali</footer>
+</main>
+</body>
+</html>
